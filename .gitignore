@@ -26,7 +26,7 @@
 /var/log/*
 /var/sessions/*
 /var/packages/*
-/var/plugins*
+#/var/plugins*
 /var/plugins/*/*.disabled
 
 ###> symfony/framework-bundle ###
