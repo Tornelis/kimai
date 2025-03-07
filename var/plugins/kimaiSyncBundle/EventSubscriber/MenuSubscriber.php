@@ -30,10 +30,10 @@ final class MenuSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $menu = $event->getMenu();
+        $menu = $event->getSystemMenu();
 
         $menu->addChild(
-            new MenuItemModel('kimai_sync', 'KimaiSync', 'kimai_sync', [], 'fas fa-snowman')
+            new MenuItemModel('kimai_sync', 'KimaiSync', 'kimai_sync', [], 'fa-solid fa-rotate')
         );
     }
 }
