@@ -3,13 +3,16 @@ services:
         autowire: true
         autoconfigure: true
         public: false
-        bind:
+        bind: 
+            #$dataDirectory: "%kimai.data_dir%"
 
-    KimaiPlugin\kimaiSyncBundle\:
+    KimaiPlugin\KimaiSyncBundle\:
         resource: '../../*'
         exclude: '../../{Resources}'
 
-
+    KimaiPlugin\KimaiSyncBundle\Controller\:
+        resource: '../../Controller/'
+        tags: ['controller.service_arguments']
 
 #services:
 #    _defaults:

@@ -1,13 +1,15 @@
 <?php
 
-namespace KimaiPlugin\kimaiSyncBundle\DependencyInjection;
+namespace KimaiPlugin\KimaiSyncBundle\DependencyInjection;
 
+use App\Plugin\AbstractPluginExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-class kimaiSyncExtension extends Extension
+class KimaiSyncExtension extends AbstractPluginExtension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
     {
@@ -17,5 +19,19 @@ class kimaiSyncExtension extends Extension
         );
 
         $loader->load('services.yaml');
+    }
+
+    public function prepend(ContainerBuilder $container): void
+    {
+
+        $container->prependExtensionConfig('kimai', [
+            'permissions' => [
+                'roles' => [
+                    'ROLE_SUPER_ADMIN' => [
+                        'kimai_sync',
+                    ],
+                ],
+            ],
+        ]);
     }
 }

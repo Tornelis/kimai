@@ -1,8 +1,8 @@
 <?php
 
-namespace KimaiPlugin\kimaiSyncBundle;
+namespace KimaiPlugin\KimaiSyncBundle;
 
 use App\Plugin\PluginInterface;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class kimaiSyncBundle extends Bundle implements PluginInterface { }
+class KimaiSyncBundle extends Bundle implements PluginInterface { }
