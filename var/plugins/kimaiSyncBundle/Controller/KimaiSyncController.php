@@ -18,7 +18,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
 
-#[IsGranted('KimaiSync')]
+//#[IsGranted('KimaiSync')]
 #[Route('/admin/kimai-sync')]
 final class KimaiSyncController extends AbstractController { 
 
