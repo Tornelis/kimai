@@ -1,5 +1,9 @@
 <?php
 
+/*
+    Steuert die Konfiguration und Übersicht im System-Untermenü von Kimai.
+*/
+
 namespace KimaiPlugin\KimaiSyncBundle\Controller;
 
 use App\Controller\AbstractController;
@@ -17,7 +21,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 
-
+/**
+ * Controller für das KimaiSync System-Untermenü.
+ */
 //#[IsGranted('KimaiSync')]
 #[Route('/admin/kimai-sync')]
 final class KimaiSyncController extends AbstractController { 
@@ -25,6 +31,7 @@ final class KimaiSyncController extends AbstractController {
     public function __construct() {  }
 
     /**
+     * Zeigt die Konfigurationsseite für KimaiSync.
      * @return Response
      */
     #[Route('/', name: 'kimai_sync', methods: ['GET'])]

@@ -1,5 +1,9 @@
 <?php
 
+/*
+    Diese Klasse lädt Konfigurationsdateien und registriert Dienste für KimaiSync.
+*/
+
 namespace KimaiPlugin\KimaiSyncBundle\DependencyInjection;
 
 use App\Plugin\AbstractPluginExtension;
@@ -9,6 +13,10 @@ use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
+
+/**
+ * Lädt Dienste und Konfigurationen für KimaiSync.
+ */
 class KimaiSyncExtension extends AbstractPluginExtension implements PrependExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
