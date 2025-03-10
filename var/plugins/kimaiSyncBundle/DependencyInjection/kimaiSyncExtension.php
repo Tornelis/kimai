@@ -21,6 +21,12 @@ class KimaiSyncExtension extends AbstractPluginExtension implements PrependExten
 {
     public function load(array $configs, ContainerBuilder $container)
     {
+        // Set Own Configuration
+        $configuration = new Configuration();
+        $config = $this->processConfiguration($configuration, $configs);
+        $this->registerBundleConfiguration($container, $config);
+
+        // Load Config Yaml
         $loader = new Loader\YamlFileLoader(
             $container, 
             new FileLocator(__DIR__ . '/../Resources/config')

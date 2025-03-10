@@ -12,6 +12,11 @@
     <h1>KimaiSync Konfiguration</h1>
     <p>Status der letzten Synchronisation: <strong>{{ 'Noch nicht ausgeführt' }}</strong></p>
 
+	<p>{{ test }}</p>
+	{% if cronStatus is defined %}
+		<p>CronStatus: {{ cronStatus }}</p>
+	{% endif %}
+
 	<div>
 		<p>Berreitgestellt von ihrem persönlichen Sexualbeauftragten zum anfassen,<br>
             TR

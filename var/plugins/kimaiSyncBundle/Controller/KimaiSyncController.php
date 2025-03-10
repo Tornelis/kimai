@@ -20,6 +20,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+use KimaiPlugin\KimaiSyncBundle\Configuration\KimaiSyncConfiguration;
+
 
 /**
  * Controller für das KimaiSync System-Untermenü.
@@ -28,7 +30,14 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 #[Route('/admin/kimai-sync')]
 final class KimaiSyncController extends AbstractController { 
 
-    public function __construct() {  }
+    /**
+     * @var KimaiSyncConfiguration
+     */
+    private $configuration;
+
+    public function __construct(KimaiSyncConfiguration $configuration) { 
+        $this->configuration = $configuration;
+     }
 
     /**
      * Zeigt die Konfigurationsseite für KimaiSync.
@@ -37,7 +46,14 @@ final class KimaiSyncController extends AbstractController {
     #[Route('/', name: 'kimai_sync', methods: ['GET'])]
     public function indexAction(): Response {
 
-        return $this->render('@KimaiSync/index.html.twig', [ ]);
+        $cronStatus = $this->configuration->getCronOnOff();
+        $test = "Hallo Welt";
+        echo $test;
+        print($test);
+        return $this->render('@KimaiSync/index.html.twig', [ 
+            'cronStatus' => $cronStatus, 
+            'test' => $test 
+        ]);
     }
 
 
