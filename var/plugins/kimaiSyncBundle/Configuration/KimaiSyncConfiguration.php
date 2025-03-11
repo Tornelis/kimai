@@ -102,7 +102,4 @@ final class KimaiSyncConfiguration
         }
         return $config;
     }
-
-    
-
 }

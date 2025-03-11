@@ -1,8 +1,10 @@
 <?php
 
-/*
+
 namespace KimaiPlugin\KimaiSyncBundle\CronSync;
 
+
+/*
 use App\Service\KimaiSyncConfiguration;
 use App\Service\KimaiSyncService;
 

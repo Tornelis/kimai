@@ -13,7 +13,8 @@ use KimaiPlugin\KimaiSyncBundle\Configuration\KimaiSyncConfiguration;
 use Doctrine\DBAL\DriverManager;
 use Doctrine\DBAL\Connection;
 
-class KimaiSyncService {
+class KimaiSyncService
+{
 
     /**
      * Master Database String
@@ -47,7 +48,8 @@ class KimaiSyncService {
     private $slaveConn;
 
 
-    public function __construct(KimaiSyncConfiguration $configuration) {
+    public function __construct(KimaiSyncConfiguration $configuration)
+    {
         $this->master = $_SERVER["DATABASE_URL"];
         $this->slave =  $_SERVER["SLAVE_DATABSE_URL"];
         $this->configuration = $configuration;
@@ -58,11 +60,13 @@ class KimaiSyncService {
         $this->slaveConn = DriverManager::getConnection(['url' => $this->slave]);
     }
 
-    private function getWayToSync(): int {
+    private function getWayToSync(): int
+    {
         return $this->configuration->getWayToSync();
     }
 
-    public function syncDatabases(): void {
+    public function syncDatabases(): void
+    {
         $syncType = $this->getWayToSync();
 
         switch ($syncType) {
@@ -81,9 +85,10 @@ class KimaiSyncService {
         }
     }
 
-    private function syncMasterToSlave(): void {
+    private function syncMasterToSlave(): void
+    {
         $data = $this->masterConn->fetchAllAssociative('SELECT * FROM timesheet');
-        
+
         $this->slaveConn->executeStatement('TRUNCATE TABLE timesheet');
 
         foreach ($data as $row) {
@@ -91,9 +96,10 @@ class KimaiSyncService {
         }
     }
 
-    private function syncSlaveToMaster(): void {
+    private function syncSlaveToMaster(): void
+    {
         $data = $this->slaveConn->fetchAllAssociative('SELECT * FROM timesheet');
-        
+
         $this->masterConn->executeStatement('TRUNCATE TABLE timesheet');
 
         foreach ($data as $row) {

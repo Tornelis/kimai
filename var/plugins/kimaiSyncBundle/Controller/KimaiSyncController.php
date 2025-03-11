@@ -28,33 +28,34 @@ use KimaiPlugin\KimaiSyncBundle\Configuration\KimaiSyncConfiguration;
  */
 //#[IsGranted('KimaiSync')]
 #[Route('/admin/kimai-sync')]
-final class KimaiSyncController extends AbstractController { 
+final class KimaiSyncController extends AbstractController
+{
 
     /**
      * @var KimaiSyncConfiguration
      */
     private $configuration;
 
-    public function __construct(KimaiSyncConfiguration $configuration) { 
+    public function __construct(KimaiSyncConfiguration $configuration)
+    {
         $this->configuration = $configuration;
-     }
+    }
 
     /**
      * Zeigt die Konfigurationsseite für KimaiSync.
      * @return Response
      */
     #[Route('/', name: 'kimai_sync', methods: ['GET'])]
-    public function indexAction(): Response {
+    public function indexAction(): Response
+    {
 
         $cronStatus = $this->configuration->getCronOnOff();
         $test = "Hallo Welt";
         echo $test;
         print($test);
-        return $this->render('@KimaiSync/index.html.twig', [ 
-            'cronStatus' => $cronStatus, 
-            'test' => $test 
+        return $this->render('@KimaiSync/index.html.twig', [
+            'cronStatus' => $cronStatus,
+            'test' => $test
         ]);
     }
-
-
 }
